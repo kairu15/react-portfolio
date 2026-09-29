@@ -1,0 +1,88 @@
+/* ==================================================================
+   Bauhaus Design System — single source of truth (Tailwind v4)
+   All tokens (colors, fonts, shadows, borders) are centralized here
+   via @theme so every component pulls from the same source.
+   ================================================================== */
+@import "tailwindcss";
+
+@theme {
+  /* ---- Palette (strict Bauhaus primaries + stark black/white) ---- */
+  --color-canvas: #F0F0F0;
+  --color-ink: #121212;
+
+  --color-bauhaus-red: #D02020;
+  --color-bauhaus-blue: #1040C0;
+  --color-bauhaus-yellow: #F0C020;
+  --color-bauhaus-muted: #E0E0E0;
+  --color-bauhaus-cream: #FFF9C4;
+
+  /* ---- Typography ---- */
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Hard offset shadows (never soft/blurred) ---- */
+  --shadow-bauhaus-sm: 3px 3px 0px 0px #121212;
+  --shadow-bauhaus-md: 4px 4px 0px 0px #121212;
+  --shadow-bauhaus-lg: 6px 6px 0px 0px #121212;
+  --shadow-bauhaus-xl: 8px 8px 0px 0px #121212;
+
+  /* ---- Binary radii ---- */
+  --radius-none: 0px;
+  --radius-full: 9999px;
+
+  /* ---- Section rhythm ---- */
+  --spacing-section: 4rem;
+}
+
+/* ---- Base layer ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-canvas text-ink font-display antialiased;
+}
+
+/* Focus visibility on every interactive element (a11y) */
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #121212;
+  outline-offset: 2px;
+}
+
+/* ---- Bauhaus shared utilities ---- */
+
+/* Section heading style: massive, uppercase, tight leading */
+@utility heading-constructivist {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+/* Label style: small, bold, wide-tracked uppercase */
+@utility label-constructivist {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+/* Hard-offset shadow button "press" interaction */
+@utility press-effect {
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+.press-effect:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* Dot-grid texture, used sparingly as background pattern */
+@utility dot-grid {
+  background-image: radial-gradient(#fff 2px, transparent 2px);
+  background-size: 20px 20px;
+}
+
+/* Triangle decoration via clip-path (used on cards/badges) */
+@utility shape-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+

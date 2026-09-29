@@ -1,0 +1,21 @@
+# Dependencies
+/node_modules
+/vendor
+
+# Build output
+/dist
+/build
+
+# Logs
+*.log
+
+# Local env files (root only; api/ covers its own .env)
+/.env
+/.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Machine-specific local dev scaffolding (one-off setup scripts)
+/*.ps1
